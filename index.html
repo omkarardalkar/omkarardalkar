@@ -99,6 +99,8 @@ html.lock,html.lock body{overflow:hidden}
 .cover.open .letter{transform:translateY(-40%)}
 .tap{margin-top:34px;letter-spacing:.24em;text-transform:uppercase;font-size:.72rem;animation:pulse 1.8s ease-in-out infinite}
 .cover.open .tap{opacity:0}
+.scroll{display:block;width:max-content;margin:30px auto 0;color:#f0d99b;animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
 @keyframes pulse{50%{opacity:.35}}
 [hidden]{display:none!important}
 @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
@@ -130,6 +132,7 @@ html.lock,html.lock body{overflow:hidden}
     <h1 class="names"><span>Shreya</span><span class="amp">&amp;</span><span>Omkar</span></h1>
     <div class="hero-sub">Joyfully invite you to celebrate our engagement and share in the beginning of our forever.</div>
     <div class="hero-date"><span id="heroDate">Date to be announced</span></div>
+    <a class="scroll" href="#invitation" aria-label="Scroll down to the invitation"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/><path d="M6 4l6 6 6-6" opacity=".45"/></svg></a>
   </div>
 </section>
 
@@ -170,7 +173,7 @@ html.lock,html.lock body{overflow:hidden}
     <div class="grid">
       <div class="card"><div class="ic">✧</div><h3>Date</h3><p id="dText">To be announced</p></div>
       <div class="card"><div class="ic">❋</div><h3>Time</h3><p id="tText">To be announced</p></div>
-      <div class="card"><div class="ic">❦</div><h3>Venue</h3><p>The Purple Orchid Suites<br>Navi Mumbai</p></div>
+      <div class="card"><div class="ic">❦</div><h3>Venue</h3><p>The Purple Orchid Suites<br>Rabale, Navi Mumbai</p></div>
     </div>
     <div class="venue-box">
       <div class="kicker">Find us easily</div>
@@ -186,7 +189,7 @@ html.lock,html.lock body{overflow:hidden}
 <footer class="reveal">
   <div class="orn">✦ ❧ ✦</div>
   <div class="sc">Shreya &amp; Omkar</div>
-  <p>Engagement · Navi Mumbai</p>
+  <p>27th December 2026 · Two hearts, one beautiful journey</p>
   <p>Made with love. We can’t wait to celebrate with you.</p>
 </footer>
 
@@ -195,9 +198,9 @@ html.lock,html.lock body{overflow:hidden}
 <script>
 // ===== Edit these once the details are final =====
 var CONFIG = {
-  dateISO: "2026-12-27T12:00:00+05:30",
-  dateText: "Sunday, 27 December 2026",
-  timeText: "12:00 PM"
+  dateISO: "2026-12-27T11:00:00+05:30",
+  dateText: "Sunday, 27th December 2026",
+  timeText: "11:00 AM"
 };
 (function(){
   var $ = function(i){return document.getElementById(i)};
@@ -274,7 +277,15 @@ var CONFIG = {
     Music.start();
     cover.classList.add("open");
     setTimeout(function(){ cover.classList.add("split"); }, 1500);
-    setTimeout(function(){ cover.hidden = true; document.documentElement.classList.remove("lock"); window.scrollTo(0, 0); }, 3000);
+    setTimeout(function(){
+      cover.hidden = true; document.documentElement.classList.remove("lock"); window.scrollTo(0, 0);
+      // Gently scroll on to the invitation unless the guest starts scrolling first
+      var stop = false, cancel = function(){ stop = true; };
+      ["wheel", "touchstart", "mousedown", "keydown"].forEach(function(ev){ window.addEventListener(ev, cancel, {once:true, passive:true}); });
+      setTimeout(function(){
+        if (!stop && !matchMedia("(prefers-reduced-motion: reduce)").matches) $("invitation").scrollIntoView({behavior:"smooth"});
+      }, 4500);
+    }, 3000);
   });
   var io = new IntersectionObserver(function(es){
     es.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add("on"); io.unobserve(en.target); } });
