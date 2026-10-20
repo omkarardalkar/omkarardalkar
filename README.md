@@ -1,10 +1,39 @@
-# 💫 About Me:
-💬 I'm a Data Analytics Engineer.<br>🔭 I’m currently working on improving my logic-building skills.<br>👯 I’m looking to collaborate on something AI-related.<br>🌱 I’m currently learning dynamic programming and web development.
+# Omkar & Shreya — Wedding Invitation Website
 
+A responsive, bilingual (English/Marathi) static wedding invitation site.
 
-# 💻 Tech Stack:
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white) ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) ![Google Cloud](https://img.shields.io/badge/GoogleCloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white) ![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white) ![Apache Airflow](https://img.shields.io/badge/Apache%20Airflow-017CEE?style=for-the-badge&logo=Apache%20Airflow&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white) ![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white) ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white) ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white) ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white) ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black) ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white) ![Apache Hadoop](https://img.shields.io/badge/Apache%20Hadoop-66CCFF?style=for-the-badge&logo=apachehadoop&logoColor=black) ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) ![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white) ![Astro](https://img.shields.io/badge/astro-%232C2052.svg?style=for-the-badge&logo=astro&logoColor=white) ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white) ![Apache](https://img.shields.io/badge/apache-%23D42029.svg?style=for-the-badge&logo=apache&logoColor=white)
+## Included
+- Royal burgundy, ivory and gold design
+- Animated hero and scroll reveals
+- English/Marathi language toggle
+- Countdown to 27 December 2026 (India Standard Time)
+- Engagement and wedding event cards with placeholders for unknown details
+- Sample wedding gallery images
+- Navi Mumbai venue search link
+- RSVP form that opens the visitor's email app
 
-### ✍️ Some Random Dev Quote 🤭
-![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical)
+## Preview locally
+1. Unzip the download.
+2. Open `index.html` in a browser. Internet access is needed for Google Fonts and sample Unsplash images.
 
+## Before publishing
+1. Open `index.html` in a text editor.
+2. Search for `const RSVP_EMAIL = "your-email@example.com";`
+3. Replace it with the email address that should receive RSVPs.
+4. Replace sample images in the gallery with your own image URLs if desired.
+5. Update engagement date/time and the final venue address once confirmed.
+
+**RSVP note:** This is a static website. The form uses a `mailto:` link and does not store submissions in a database. For reliable RSVP collection without requiring guests to have an email app configured, connect a form service (such as Formspree) or add a backend.
+
+## Publish on Vercel (free)
+1. Create/sign in to a Vercel account at https://vercel.com/
+2. Create a GitHub repository and upload `index.html` (and this README if you want).
+3. In Vercel, choose **Add New → Project**, import the repository, and deploy.
+4. Framework preset: **Other**. Build command: leave empty. Output directory: `.` (or leave the default if detected).
+5. Once deployment finishes, Vercel gives you a public `*.vercel.app` URL you can share on WhatsApp.
+
+### Quick alternative
+You can also use Netlify Drop at https://app.netlify.com/drop and drag the unzipped folder into the page for a quick static deployment.
+
+## Customization
+All styling and behavior are inside `index.html`, so no build tools or package installation are required.

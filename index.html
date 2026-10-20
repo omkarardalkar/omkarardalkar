@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#651d2b" />
+  <meta name="description" content="A royal wedding invitation celebrating Omkar and Shreya on 27 December 2026 in Navi Mumbai." />
+  <title>Omkar & Shreya | Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Tiro+Devanagari+Marathi&display=swap" rel="stylesheet">
+  <style>
+    :root{--wine:#651d2b;--wine-dark:#3e101a;--gold:#caa65b;--gold-light:#f0d99b;--cream:#fff8eb;--ink:#38272a;--muted:#806d68;--green:#314a3b}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif}
+    button,input,select,textarea{font:inherit} a{color:inherit}
+    .marathi{font-family:"Tiro Devanagari Marathi",serif}
+    .topbar{position:absolute;top:0;left:0;right:0;z-index:4;display:flex;justify-content:space-between;align-items:center;padding:20px clamp(18px,5vw,64px);color:#fff8eb}
+    .brand{font-family:"Cormorant Garamond",serif;font-size:1.35rem;letter-spacing:.08em}
+    .lang-btn{border:1px solid #e9d39a;background:#ffffff12;color:#fff8eb;border-radius:999px;padding:9px 14px;cursor:pointer;backdrop-filter:blur(8px)}
+    .hero{min-height:100svh;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;color:#fff8eb;background:linear-gradient(135deg,#351019ee,#6b2030d9 55%,#241b19e8),url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2000&q=85") center/cover}
+    .hero:before,.hero:after{content:"";position:absolute;width:min(44vw,420px);height:min(44vw,420px);border:1px solid #d7b66a88;border-radius:50%;pointer-events:none}
+    .hero:before{top:-190px;left:-130px;box-shadow:0 0 0 18px #d7b66a12,0 0 0 38px #d7b66a0c}
+    .hero:after{right:-150px;bottom:-220px;box-shadow:0 0 0 18px #d7b66a12,0 0 0 38px #d7b66a0c}
+    .hero-inner{position:relative;z-index:1;width:min(800px,92%);padding:120px 10px 65px;animation:rise 1.2s ease both}
+    .eyebrow{letter-spacing:.28em;text-transform:uppercase;font-size:.72rem;color:var(--gold-light)}
+    .ganesh{font-size:2rem;color:var(--gold-light);margin:16px 0}
+    h1,h2,h3{font-family:"Cormorant Garamond",serif;font-weight:500}
+    .hero h1{font-size:clamp(3.4rem,10vw,7.2rem);line-height:.9;margin:18px 0 24px;letter-spacing:-.035em}
+    .amp{font-style:italic;color:var(--gold-light);font-size:.8em}
+    .hero-sub{font-size:clamp(1rem,2vw,1.2rem);line-height:1.8;color:#f7e9d4}
+    .hero-date{margin:30px auto 24px;display:flex;gap:14px;align-items:center;justify-content:center;color:var(--gold-light);letter-spacing:.16em;font-size:.82rem}
+    .hero-date:before,.hero-date:after{content:"";width:44px;height:1px;background:var(--gold)}
+    .btn{display:inline-flex;justify-content:center;align-items:center;gap:9px;border:0;border-radius:999px;padding:14px 23px;background:var(--gold);color:#351019;text-decoration:none;font-weight:700;cursor:pointer;transition:transform .2s,box-shadow .2s}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px #16060b40}
+    .btn-outline{border:1px solid var(--gold);background:transparent;color:var(--gold-light)}
+    .section{padding:86px 20px}
+    .container{width:min(1080px,100%);margin:auto}
+    .section-head{text-align:center;margin-bottom:38px}
+    .kicker{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#9b7331;font-weight:700}
+    .section h2{font-size:clamp(2.5rem,6vw,4rem);color:var(--wine);margin:9px 0 12px}
+    .section-head p{color:var(--muted);line-height:1.8;max-width:620px;margin:0 auto}
+    .intro{background:linear-gradient(180deg,#fff8eb,#f8edda)}
+    .intro-card{max-width:790px;margin:auto;text-align:center;padding:34px clamp(18px,5vw,60px);border:1px solid #d9bf7c;border-radius:180px 180px 22px 22px;position:relative}
+    .intro-card:before{content:"✦";position:absolute;top:-15px;left:calc(50% - 15px);font-size:26px;color:#b18b42;background:var(--cream);padding:0 8px}
+    .intro-card p{line-height:2;color:#6f5c54;font-size:1rem}
+    .names-small{font-family:"Cormorant Garamond",serif;font-size:2.3rem;color:var(--wine)}
+    .countdown{background:var(--wine);color:var(--cream);text-align:center;position:relative;overflow:hidden}
+    .countdown h2{color:var(--gold-light)}
+    .countdown .kicker{color:var(--gold-light)}
+    .timer{display:grid;grid-template-columns:repeat(4,minmax(60px,110px));justify-content:center;gap:12px;margin:30px auto 0}
+    .timebox{padding:20px 8px;border:1px solid #caa65b77;border-radius:12px;background:#ffffff08}
+    .timebox strong{display:block;font-family:"Cormorant Garamond",serif;font-size:2.7rem;color:var(--gold-light);font-weight:500}
+    .timebox span{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:#f4dfc7}
+    .events{background:#f8edda}
+    .event-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .event-card{background:#fffaf1;border:1px solid #e6d6b5;border-radius:18px;padding:28px;position:relative;overflow:hidden;min-height:190px}
+    .event-card:after{content:"✧";position:absolute;right:20px;top:12px;font-size:3.2rem;color:#d9bf7c55}
+    .event-icon{font-size:1.5rem;color:#a67c31}
+    .event-card h3{font-size:2rem;color:var(--wine);margin:12px 0 5px}
+    .event-card p{color:var(--muted);line-height:1.7;margin:5px 0}
+    .tag{display:inline-block;background:#f1e3c6;color:#74501b;border-radius:999px;padding:6px 10px;font-size:.7rem;margin-top:8px}
+    .gallery{background:#fff8eb}
+    .gallery-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;grid-template-rows:210px 210px;gap:12px}
+    .gallery-img{border-radius:14px;overflow:hidden;background:#d7c3a3;position:relative}
+    .gallery-img:first-child{grid-row:span 2}
+    .gallery-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+    .gallery-img:hover img{transform:scale(1.05)}
+    .gallery-note{text-align:center;color:var(--muted);font-size:.82rem;margin-top:15px}
+    .venue{background:#efe2c8}
+    .venue-wrap{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+    .venue-art{min-height:330px;border-radius:160px 160px 18px 18px;background:linear-gradient(#45131d55,#45131d66),url("https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1000&q=85") center/cover;box-shadow:inset 0 0 0 1px #caa65b}
+    .venue-copy h2{text-align:left}
+    .venue-copy p{line-height:1.9;color:#6f5c54}
+    .rsvp{background:#fff8eb}
+    .rsvp-form{max-width:650px;margin:auto;padding:28px;background:#fffdf7;border:1px solid #e3d2ad;border-radius:20px;box-shadow:0 15px 45px #5b31100b}
+    .field{display:grid;gap:7px;margin-bottom:16px}
+    label{font-size:.82rem;font-weight:700;color:#60474a}
+    input,select,textarea{width:100%;border:1px solid #d9c9ad;background:#fffdf8;border-radius:10px;padding:13px 14px;color:var(--ink);outline:none}
+    input:focus,select:focus,textarea:focus{border-color:#9f7836;box-shadow:0 0 0 3px #caa65b22}
+    .form-note{font-size:.78rem;line-height:1.6;color:var(--muted)}
+    .footer{background:var(--wine-dark);color:#f5e7d2;text-align:center;padding:48px 20px}
+    .footer .script{font-family:"Cormorant Garamond",serif;font-size:2.6rem;color:var(--gold-light)}
+    .footer p{color:#d8c1b1;font-size:.85rem}
+    .ornament{color:#caa65b;letter-spacing:.5em;margin:12px 0}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+    .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:#2d211e;color:white;padding:13px 18px;border-radius:12px;box-shadow:0 10px 30px #0003;opacity:0;pointer-events:none;transition:.25s;z-index:10;max-width:90%;text-align:center;font-size:.88rem}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:700px){.section{padding:65px 17px}.event-grid{grid-template-columns:1fr}.event-card{min-height:160px}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:190px 145px 145px}.gallery-img:first-child{grid-row:auto;grid-column:span 2}.venue-wrap{grid-template-columns:1fr}.venue-art{min-height:260px;order:2}.venue-copy h2{text-align:center}.timer{gap:7px;grid-template-columns:repeat(4,minmax(0,1fr))}.timebox{padding:14px 3px}.timebox strong{font-size:2rem}.timebox span{font-size:.55rem}.intro-card{border-radius:120px 120px 18px 18px}.topbar{padding:16px}.hero-date{letter-spacing:.08em}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">O <span style="color:var(--gold)">✦</span> S</div>
+    <button class="lang-btn" id="languageToggle" type="button" aria-label="Switch language">मराठी / English</button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div class="eyebrow" data-en="A celebration of love & togetherness" data-mr="प्रेम आणि सहजीवनाचा मंगल सोहळा">A celebration of love & togetherness</div>
+        <div class="ganesh">ॐ श्री गणेशाय नमः</div>
+        <div class="eyebrow" data-en="Together with our families" data-mr="आमच्या कुटुंबीयांच्या स्नेहाशीर्वादाने">Together with our families</div>
+        <h1>Omkar <span class="amp">&</span><br>Shreya</h1>
+        <div class="hero-sub" data-en="Joyfully invite you to share in the beginning of our forever." data-mr="आमच्या नव्या आयुष्याच्या शुभारंभाचे साक्षीदार होण्यासाठी आपले सस्नेह निमंत्रण.">Joyfully invite you to share in the beginning of our forever.</div>
+        <div class="hero-date"><span data-en="SUNDAY · 27 DECEMBER 2026" data-mr="रविवार · २७ डिसेंबर २०२६">SUNDAY · 27 DECEMBER 2026</span></div>
+        <button class="btn" id="openInvite" type="button"><span data-en="Open our invitation" data-mr="आमंत्रण पाहा">Open our invitation</span> <span aria-hidden="true">↓</span></button>
+      </div>
+    </section>
+
+    <section class="section intro" id="invitation">
+      <div class="container reveal">
+        <div class="section-head">
+          <div class="kicker" data-en="With love & blessings" data-mr="स्नेह आणि आशीर्वादांसह">With love & blessings</div>
+          <h2 data-en="A new chapter begins" data-mr="एका नव्या पर्वाची सुरुवात">A new chapter begins</h2>
+        </div>
+        <div class="intro-card">
+          <div class="ganesh">❦</div>
+          <div class="names-small">Omkar & Shreya</div>
+          <p data-en="With the blessings of our elders and the love of our families, we invite you to join us as we celebrate our wedding and begin a beautiful journey together." data-mr="वडीलधाऱ्यांच्या आशीर्वादाने आणि कुटुंबीयांच्या प्रेमाने, आमच्या विवाहसोहळ्यात सहभागी होऊन आमच्या नव्या प्रवासाला शुभाशीर्वाद द्यावेत, ही नम्र विनंती.">With the blessings of our elders and the love of our families, we invite you to join us as we celebrate our wedding and begin a beautiful journey together.</p>
+          <div class="ornament">✦ ❧ ✦</div>
+          <p><strong data-en="Your presence will make our day complete." data-mr="आपली उपस्थिती आमचा आनंद द्विगुणित करेल.">Your presence will make our day complete.</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section countdown" aria-label="Wedding countdown">
+      <div class="container reveal">
+        <div class="kicker" data-en="The countdown begins" data-mr="आनंदाच्या क्षणांची उलटगणती">The countdown begins</div>
+        <h2 data-en="Until we say “I do”" data-mr="शुभमंगलाच्या क्षणापर्यंत">Until we say “I do”</h2>
+        <p data-en="Save the date — Sunday, 27 December 2026" data-mr="तारीख लक्षात ठेवा — रविवार, २७ डिसेंबर २०२६">Save the date — Sunday, 27 December 2026</p>
+        <div class="timer" id="timer">
+          <div class="timebox"><strong id="days">—</strong><span data-en="Days" data-mr="दिवस">Days</span></div>
+          <div class="timebox"><strong id="hours">—</strong><span data-en="Hours" data-mr="तास">Hours</span></div>
+          <div class="timebox"><strong id="minutes">—</strong><span data-en="Minutes" data-mr="मिनिटे">Minutes</span></div>
+          <div class="timebox"><strong id="seconds">—</strong><span data-en="Seconds" data-mr="सेकंद">Seconds</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section events" id="events">
+      <div class="container reveal">
+        <div class="section-head">
+          <div class="kicker" data-en="Gather, celebrate, bless" data-mr="सोहळे, आनंद आणि आशीर्वाद">Gather, celebrate, bless</div>
+          <h2 data-en="Wedding celebrations" data-mr="विवाहसोहळ्याचे कार्यक्रम">Wedding celebrations</h2>
+          <p data-en="We are putting the finishing touches on our celebration. Detailed timings will be shared soon." data-mr="आमच्या सोहळ्याची तयारी सुरू आहे. कार्यक्रमांची वेळ आणि सविस्तर माहिती लवकरच कळवू.">We are putting the finishing touches on our celebration. Detailed timings will be shared soon.</p>
+        </div>
+        <div class="event-grid">
+          <article class="event-card"><div class="event-icon">✧</div><h3 data-en="Engagement" data-mr="साखरपुडा">Engagement</h3><p data-en="A promise of forever" data-mr="आयुष्यभराच्या साथीसाठी एक सुंदर वचन">A promise of forever</p><span class="tag" data-en="Date & time to be announced" data-mr="तारीख व वेळ लवकरच कळवू">Date & time to be announced</span></article>
+          <article class="event-card"><div class="event-icon">❋</div><h3 data-en="Wedding ceremony" data-mr="विवाहसोहळा">Wedding ceremony</h3><p data-en="Sunday, 27 December 2026 · Navi Mumbai" data-mr="रविवार, २७ डिसेंबर २०२६ · नवी मुंबई">Sunday, 27 December 2026 · Navi Mumbai</p><span class="tag" data-en="Venue & time to be announced" data-mr="स्थळ व वेळ लवकरच कळवू">Venue & time to be announced</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gallery" id="gallery">
+      <div class="container reveal">
+        <div class="section-head">
+          <div class="kicker" data-en="Little moments, big memories" data-mr="छोटे क्षण, सुंदर आठवणी">Little moments, big memories</div>
+          <h2 data-en="A glimpse of romance" data-mr="प्रेमाची एक झलक">A glimpse of romance</h2>
+          <p data-en="A few romantic placeholders for now — replace these with your favourite couple photos whenever you're ready." data-mr="सध्या काही सुंदर नमुना छायाचित्रे — तयार झाल्यावर येथे तुमचे आवडते फोटो जोडा.">A few romantic placeholders for now — replace these with your favourite couple photos whenever you're ready.</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-img"><img loading="lazy" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=85" alt="Romantic wedding celebration" /></div>
+          <div class="gallery-img"><img loading="lazy" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=700&q=85" alt="Wedding flowers and details" /></div>
+          <div class="gallery-img"><img loading="lazy" src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=700&q=85" alt="Elegant wedding decor" /></div>
+          <div class="gallery-img"><img loading="lazy" src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=700&q=85" alt="Wedding ceremony atmosphere" /></div>
+          <div class="gallery-img"><img loading="lazy" src="https://images.unsplash.com/photo-1507504031003-b417219a0mane?auto=format&fit=crop&w=700&q=85" alt="Romantic celebration" onerror="this.src='https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=700&q=85'"/></div>
+        </div>
+        <div class="gallery-note" data-en="Sample images are loaded from Unsplash and require an internet connection." data-mr="नमुना छायाचित्रांसाठी इंटरनेट कनेक्शन आवश्यक आहे.">Sample images are loaded from Unsplash and require an internet connection.</div>
+      </div>
+    </section>
+
+    <section class="section venue" id="venue">
+      <div class="container venue-wrap reveal">
+        <div class="venue-art" role="img" aria-label="Elegant wedding venue inspiration"></div>
+        <div class="venue-copy">
+          <div class="kicker" data-en="Join us in" data-mr="आपली भेट होईल">Join us in</div>
+          <h2 data-en="Navi Mumbai" data-mr="नवी मुंबई">Navi Mumbai</h2>
+          <p data-en="Our wedding venue and ceremony timings will be announced soon. Please check back for the final details." data-mr="विवाहस्थळ आणि कार्यक्रमाची वेळ लवकरच जाहीर केली जाईल. अंतिम माहितीसाठी पुन्हा भेट द्या.">Our wedding venue and ceremony timings will be announced soon. Please check back for the final details.</p>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=wedding+venues+Navi+Mumbai" target="_blank" rel="noopener" data-en="Explore Navi Mumbai venues ↗" data-mr="नवी मुंबईतील स्थळे पाहा ↗">Explore Navi Mumbai venues ↗</a>
+          <p style="font-size:.8rem" data-en="This link opens a general venue search, not a confirmed wedding address." data-mr="ही लिंक स्थळांचा शोध उघडते; हे निश्चित विवाहस्थळाचे ठिकाण नाही.">This link opens a general venue search, not a confirmed wedding address.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section rsvp" id="rsvp">
+      <div class="container reveal">
+        <div class="section-head">
+          <div class="kicker" data-en="We hope you can join us" data-mr="आपली उपस्थिती अपेक्षित आहे">We hope you can join us</div>
+          <h2 data-en="Kindly RSVP" data-mr="कृपया उपस्थिती कळवा">Kindly RSVP</h2>
+          <p data-en="Let us know if you'll be celebrating with us. This demo opens your email app to send the response." data-mr="आपण सोहळ्याला येणार आहात का ते कळवा. हा नमुना फॉर्म उत्तर पाठवण्यासाठी तुमचे ईमेल अॅप उघडतो.">Let us know if you'll be celebrating with us. This demo opens your email app to send the response.</p>
+        </div>
+        <form class="rsvp-form" id="rsvpForm">
+          <div class="field"><label for="guestName" data-en="Your name" data-mr="आपले नाव">Your name</label><input id="guestName" name="guestName" required placeholder="Full name / पूर्ण नाव" /></div>
+          <div class="field"><label for="attendance" data-en="Will you join us?" data-mr="आपण उपस्थित राहणार का?">Will you join us?</label><select id="attendance" name="attendance" required><option value="" data-en="Please select" data-mr="कृपया निवडा">Please select</option><option value="Joyfully accepts" data-en="Joyfully accepts" data-mr="आनंदाने उपस्थित राहीन">Joyfully accepts</option><option value="Regretfully declines" data-en="Regretfully declines" data-mr="दुर्दैवाने उपस्थित राहू शकणार नाही">Regretfully declines</option></select></div>
+          <div class="field"><label for="guests" data-en="Number of guests (including you)" data-mr="एकूण पाहुणे (आपल्यासह)">Number of guests (including you)</label><select id="guests" name="guests"><option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option></select></div>
+          <div class="field"><label for="message" data-en="A note for the couple (optional)" data-mr="जोडप्यासाठी संदेश (ऐच्छिक)">A note for the couple (optional)</label><textarea id="message" name="message" rows="3" placeholder="Your wishes... / शुभेच्छा..."></textarea></div>
+          <button class="btn" type="submit" style="width:100%" data-en="Send RSVP ↗" data-mr="उत्तर पाठवा ↗">Send RSVP ↗</button>
+          <p class="form-note" data-en="Setup note: add your preferred RSVP email address in the script near the bottom of index.html before publishing." data-mr="सूचना: प्रकाशित करण्यापूर्वी index.html च्या शेवटच्या script मध्ये RSVP साठीचा ईमेल पत्ता भरा.">Setup note: add your preferred RSVP email address in the script near the bottom of index.html before publishing.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="ornament">✦ ❧ ✦</div>
+    <div class="script">Omkar & Shreya</div>
+    <p data-en="27 December 2026 · Navi Mumbai" data-mr="२७ डिसेंबर २०२६ · नवी मुंबई">27 December 2026 · Navi Mumbai</p>
+    <p data-en="Made with love. We can't wait to celebrate with you." data-mr="प्रेमाने तयार केले. आपल्यासोबत आनंद साजरा करण्याची आतुरता आहे.">Made with love. We can't wait to celebrate with you.</p>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // TODO: Replace this with the email address that should receive RSVPs.
+    const RSVP_EMAIL = "your-email@example.com";
+    let currentLanguage = "en";
+    const toggle = document.getElementById("languageToggle");
+    toggle.addEventListener("click", () => {
+      currentLanguage = currentLanguage === "en" ? "mr" : "en";
+      document.documentElement.lang = currentLanguage === "mr" ? "mr" : "en";
+      document.querySelectorAll("[data-en][data-mr]").forEach(el => {
+        const value = el.dataset[currentLanguage];
+        if (value) el.textContent = value;
+      });
+      toggle.textContent = currentLanguage === "en" ? "मराठी / English" : "English / मराठी";
+    });
+    document.getElementById("openInvite").addEventListener("click", () => {
+      document.getElementById("invitation").scrollIntoView({behavior:"smooth"});
+    });
+
+    // Countdown targets the start of 27 December 2026 in India Standard Time.
+    function updateCountdown() {
+      const target = new Date("2026-12-27T00:00:00+05:30").getTime();
+      let remaining = Math.max(0, target - Date.now());
+      const d = Math.floor(remaining / 86400000); remaining %= 86400000;
+      const h = Math.floor(remaining / 3600000); remaining %= 3600000;
+      const m = Math.floor(remaining / 60000); remaining %= 60000;
+      const s = Math.floor(remaining / 1000);
+      document.getElementById("days").textContent = d;
+      document.getElementById("hours").textContent = String(h).padStart(2,"0");
+      document.getElementById("minutes").textContent = String(m).padStart(2,"0");
+      document.getElementById("seconds").textContent = String(s).padStart(2,"0");
+    }
+    updateCountdown(); setInterval(updateCountdown, 1000);
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); }
+      });
+    }, {threshold:.12});
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    const toast = document.getElementById("toast");
+    function showToast(message) { toast.textContent = message; toast.classList.add("show"); setTimeout(() => toast.classList.remove("show"), 4200); }
+    document.getElementById("rsvpForm").addEventListener("submit", event => {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+      const name = data.get("guestName");
+      const attendance = data.get("attendance");
+      const guests = data.get("guests");
+      const message = data.get("message") || "—";
+      if (RSVP_EMAIL === "your-email@example.com") {
+        showToast(currentLanguage === "mr" ? "कृपया प्रकाशित करण्यापूर्वी RSVP ईमेल पत्ता सेट करा." : "Please set your RSVP email address in index.html before publishing.");
+        return;
+      }
+      const subject = encodeURIComponent("Wedding RSVP — " + name);
+      const body = encodeURIComponent("RSVP for Omkar & Shreya\nName: " + name + "\nResponse: " + attendance + "\nGuests: " + guests + "\nMessage: " + message);
+      window.location.href = "mailto:" + RSVP_EMAIL + "?subject=" + subject + "&body=" + body;
+    });
+  </script>
+</body>
+</html>
