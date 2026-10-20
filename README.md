@@ -19,7 +19,7 @@ The whole site lives in one file, `index.html`. There is nothing to install or b
 - **Google Maps button:** one tap opens the venue in Google Maps.
 - **Scroll transitions:** the first page fades as you scroll, and every section's content rises into view in sequence. A bouncing arrow cues guests to scroll, and the page also scrolls on by itself a few seconds after opening (unless the guest scrolls first).
 - **Light and dark mode:** follows the guest's phone setting.
-- **Accessibility:** respects "reduce motion" settings (animations and auto-scroll are skipped).
+- **Accessibility:** if a phone has "Reduce Motion" or "Remove animations" turned on, the page uses gentle fades instead of sliding and zooming, and skips the auto-scroll.
 
 ---
 
@@ -74,7 +74,7 @@ Dark-mode colours are in the two `dark` blocks just below.
 
 ### Music
 
-The tune is a slow chord loop (C, Am, F, G) in the `Music` section of the script. To change the mood, edit the `chords` array. Lower the `.8` in `master.gain` to make it quieter.
+The tune is a slow 24-second chord loop (C, Am, F, G), synthesised in the browser and played through a normal `<audio>` element, so it also works on iPhones that are on silent. To change the mood, edit the `chords` array in the `Music` section of the script. To make it quieter, lower the volume numbers in the `note(...)` calls (for example `.05`).
 
 To use a real song instead, add an `<audio>` element and replace the `Music` code with `audio.play()` and `audio.pause()` calls. Keep the file small so the page loads quickly.
 

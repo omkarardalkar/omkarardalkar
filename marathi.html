@@ -105,7 +105,7 @@ html.lock,html.lock body{overflow:hidden}
 [hidden]{display:none!important}
 @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 @media(max-width:700px){.section{padding:64px 16px}.grid{grid-template-columns:1fr}.timer{gap:7px}.tb strong{font-size:2rem}.intro-card{border-radius:120px 120px 18px 18px}.hero-date{letter-spacing:.08em}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal,.st{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.scroll{animation:none}.hero-inner{animation:none}.reveal,.st{transform:none!important}.curtain{transition:opacity 1.2s ease}.cover.split .curtain.l,.cover.split .curtain.r{transform:none;opacity:0}}
 .eyebrow,.kicker,.hero-date,.tb span,.tap,.music{letter-spacing:0;text-transform:none}
 .eyebrow,.kicker,.tb span,.tap{font-size:.85rem}
 .hero-date{font-size:.95rem}
@@ -117,7 +117,7 @@ html.lock,html.lock body{overflow:hidden}
 </style>
 </head>
 <body>
-<noscript><style>.cover{display:none}html.lock,html.lock body{overflow:auto}</style></noscript>
+<noscript><style>.cover{display:none}html.lock,html.lock body{overflow:auto}.reveal,.st{opacity:1!important;transform:none!important}</style></noscript>
 <div class="cover" id="cover">
   <div class="curtain l"></div><div class="curtain r"></div>
   <button class="env" id="envBtn" type="button" aria-label="आमंत्रण उघडा">
@@ -228,23 +228,34 @@ var CONFIG = {
     };
     tick(); setInterval(tick, 1000);
   }
-  // Soft ambient music, generated in the browser (no audio files needed)
+  // Soft ambient music: a short seamless loop synthesised in the browser and played
+  // through a normal <audio> element (works on iPhones even when the silent switch is on).
   var Music = (function(){
-    var ctx, master, timer, on = false, k = 0;
-    var chords = [[261.63,329.63,392],[220,261.63,329.63],[174.61,220,261.63],[196,246.94,293.66]];
-    function tone(f, t, dur, vol){
-      var o = ctx.createOscillator(), g = ctx.createGain();
-      o.type = "sine"; o.frequency.value = f;
-      g.gain.setValueAtTime(0, t);
-      g.gain.linearRampToValueAtTime(vol, t + dur*.4);
-      g.gain.linearRampToValueAtTime(0, t + dur);
-      o.connect(g); g.connect(master); o.start(t); o.stop(t + dur + .1);
-    }
-    function play(){
-      var t = ctx.currentTime, c = chords[k % 4];
-      c.forEach(function(f){ tone(f, t, 7, .05); tone(f/2, t, 7, .03); });
-      tone(c[2]*2, t + 1.5, 4, .018); tone(c[1]*2, t + 3.5, 4, .015);
-      k++;
+    var audio, on = false;
+    function build(){
+      var sr = 22050, secs = 24, n = sr * secs, buf = new Float32Array(n);
+      var chords = [[261.63,329.63,392],[220,261.63,329.63],[174.61,220,261.63],[196,246.94,293.66]];
+      function note(f, t0, dur, vol){
+        var len = Math.floor(dur * sr), s0 = Math.floor(t0 * sr), w = 2 * Math.PI * f / sr;
+        for (var i = 0; i < len; i++){
+          var p = i / len, env = p < .4 ? p / .4 : (1 - p) / .6;
+          buf[(s0 + i) % n] += vol * env * Math.sin(w * i);
+        }
+      }
+      chords.forEach(function(c, j){
+        var t = j * 6;
+        c.forEach(function(f){ note(f, t, 7, .05); note(f / 2, t, 7, .03); });
+        note(c[2] * 2, t + 1.5, 4, .018); note(c[1] * 2, t + 3.5, 4, .015);
+      });
+      var bytes = new ArrayBuffer(44 + n * 2), v = new DataView(bytes);
+      function str(o, s){ for (var i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); }
+      str(0, "RIFF"); v.setUint32(4, 36 + n * 2, true); str(8, "WAVE"); str(12, "fmt ");
+      v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+      v.setUint32(24, sr, true); v.setUint32(28, sr * 2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+      str(36, "data"); v.setUint32(40, n * 2, true);
+      for (var i = 0; i < n; i++) v.setInt16(44 + i * 2, Math.max(-1, Math.min(1, buf[i])) * 32767, true);
+      audio = new Audio(URL.createObjectURL(new Blob([bytes], {type: "audio/wav"})));
+      audio.loop = true;
     }
     function label(){
       $("musicBtn").classList.toggle("off", !on);
@@ -253,27 +264,23 @@ var CONFIG = {
     function start(){
       if (on) return;
       try {
-        if (!ctx) {
-          var AC = window.AudioContext || window.webkitAudioContext;
-          ctx = new AC();
-          var lp = ctx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 1400;
-          master = ctx.createGain(); master.gain.value = 0;
-          master.connect(lp); lp.connect(ctx.destination);
-        }
-        ctx.resume();
-        master.gain.cancelScheduledValues(ctx.currentTime);
-        master.gain.linearRampToValueAtTime(.8, ctx.currentTime + 3);
-        play(); timer = setInterval(play, 6000); on = true;
-      } catch (e) {}
+        if (!audio) build();
+        var p = audio.play();
+        on = true;
+        if (p && p.catch) p.catch(function(){ on = false; label(); });
+      } catch (e) { on = false; }
       label();
     }
     function stop(){
       if (!on) return;
-      clearInterval(timer);
-      master.gain.cancelScheduledValues(ctx.currentTime);
-      master.gain.linearRampToValueAtTime(0, ctx.currentTime + 1);
-      on = false; label();
+      audio.pause(); on = false; label();
     }
+    document.addEventListener("visibilitychange", function(){
+      if (!audio) return;
+      if (document.hidden) audio.pause();
+      else if (on) { var p = audio.play(); if (p && p.catch) p.catch(function(){}); }
+    });
+    setTimeout(function(){ if (!audio) { try { build(); } catch (e) {} } }, 600);
     return { start: start, toggle: function(){ on ? stop() : start(); } };
   })();
   $("musicBtn").addEventListener("click", Music.toggle);
@@ -281,7 +288,7 @@ var CONFIG = {
   var cover = $("cover"), opened = false;
   $("envBtn").addEventListener("click", function(){
     if (opened) return; opened = true;
-    Music.start();
+    try { Music.start(); } catch (e) {}
     cover.classList.add("open");
     setTimeout(function(){ cover.classList.add("split"); }, 1500);
     setTimeout(function(){
