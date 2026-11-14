@@ -234,7 +234,7 @@ html.lock,html.lock body{overflow:hidden}
 var CONFIG = {
   dateISO: "2026-12-27T11:00:00+05:30",
   dateText: "रविवार, २७ डिसेंबर २०२६",
-  timeText: "सकाळी १०:०० वाजता"
+  timeText: "सकाळी ११:०० वाजता"
 };
 (function(){
   var $ = function(i){return document.getElementById(i)};
@@ -256,10 +256,15 @@ var CONFIG = {
     };
     tick(); setInterval(tick, 1000);
   }
-  // Soft ambient music: a short seamless loop synthesised in the browser and played
-  // through a normal <audio> element (works on iPhones even when the silent switch is on).
+  // Background music: music.mp3 (keep it in the same folder as this page) played through a
+  // normal <audio> element, which also works on iPhones with the silent switch on.
+  // If the file can't be loaded, a soft synthesised loop is used instead.
   var Music = (function(){
-    var audio, on = false;
+    var audio = new Audio("music.mp3"), on = false;
+    audio.loop = true; audio.preload = "auto"; audio.volume = .7;
+    audio.addEventListener("error", function(){
+      try { build(); if (on) { var q = audio.play(); if (q && q.catch) q.catch(function(){}); } } catch (e) {}
+    });
     function build(){
       var sr = 22050, secs = 24, n = sr * secs, buf = new Float32Array(n);
       var chords = [[261.63,329.63,392],[220,261.63,329.63],[174.61,220,261.63],[196,246.94,293.66]];
