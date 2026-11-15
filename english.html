@@ -99,23 +99,47 @@ html.lock,html.lock body{overflow:hidden}
 .cover.open .letter{transform:translateY(-40%)}
 .tap{margin-top:34px;letter-spacing:.24em;text-transform:uppercase;font-size:.72rem;animation:pulse 1.8s ease-in-out infinite}
 .cover.open .tap{opacity:0}
+.tap{font-size:1.15rem;font-weight:600;letter-spacing:.16em;margin-top:30px;color:#fff1c9}
+.rings{display:block;width:104px;height:61px;margin:0 auto}
+.names .rings{margin:4px auto}
+.letter .rings{width:50px;height:29px;margin:2px auto}
+.nm,.sc{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;column-gap:.3em}
+.nm .l,.sc .l{text-align:right}
+.nm .r,.sc .r{text-align:left}
+.nm .rings,.sc .rings{width:1.9em;height:1.1em;margin:0}
+.pop{position:absolute;z-index:3;pointer-events:none;opacity:0;animation:pop 2s cubic-bezier(.22,.7,.3,1) forwards}
+.pop svg{display:block;width:100%;height:100%}
+@keyframes pop{0%{opacity:0;transform:translate(-50%,-50%) scale(.3)}12%{opacity:1}45%{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1) rotate(calc(var(--r) * .5))}100%{opacity:0;transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y) + 220px)) scale(.9) rotate(var(--r))}}
+.petals{position:fixed;inset:0;z-index:5;pointer-events:none;overflow:hidden}
+.petals i{position:absolute;top:-10vh;display:block;animation:fall linear infinite;will-change:transform}
+.petals b{display:block;width:100%;height:100%;perspective:420px;animation:sway ease-in-out infinite alternate}
+.petals svg{display:block;width:100%;height:100%;animation:tumble linear infinite;transform-style:preserve-3d}
+@keyframes fall{to{transform:translate3d(0,118vh,0)}}
+@keyframes sway{from{transform:translateX(-30px)}to{transform:translateX(30px)}}
+@keyframes tumble{from{transform:rotateX(0) rotateY(0) rotateZ(0)}to{transform:rotateX(360deg) rotateY(240deg) rotateZ(180deg)}}
+main>section.section{position:relative}
+.nx{position:absolute;left:50%;bottom:8px;width:44px;height:44px;margin-left:-22px;display:grid;place-items:center;color:var(--kick);opacity:.9;text-decoration:none}
+.countdown .nx{color:var(--gold-light)}
+.nx svg{display:block;width:26px;height:26px;animation:bob 1.8s ease-in-out infinite}
 .scroll{display:block;width:max-content;margin:30px auto 0;color:#f0d99b;animation:bob 1.8s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
 @keyframes pulse{50%{opacity:.35}}
 [hidden]{display:none!important}
 @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 @media(max-width:700px){.section{padding:64px 16px}.grid{grid-template-columns:1fr}.timer{gap:7px}.tb strong{font-size:2rem}.intro-card{border-radius:120px 120px 18px 18px}.hero-date{letter-spacing:.08em}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.scroll{animation:none}.hero-inner{animation:none}.reveal,.st{transform:none!important}.curtain{transition:opacity 1.2s ease}.cover.split .curtain.l,.cover.split .curtain.r{transform:none;opacity:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.scroll{animation:none}.nx svg{animation:none}.hero-inner{animation:none}.reveal,.st{transform:none!important}.curtain{transition:opacity 1.2s ease}.cover.split .curtain.l,.cover.split .curtain.r{transform:none;opacity:0}}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="rings" viewBox="0 0 96 56"><g fill="none" stroke-width="3" stroke-linecap="round"><circle cx="34" cy="32" r="20" stroke="#e0bf6d"/><circle cx="62" cy="32" r="20" stroke="#b8913f"/><path d="M42.77 14.02A20 20 0 0 1 51.82 22.92" stroke="#e0bf6d"/><path d="M52.92 49.82A20 20 0 0 1 44.34 41.38" stroke="#b8913f"/></g><path d="M62 3l5 6-5 6-5-6z" fill="#fff8eb" stroke="#e0bf6d" stroke-width="1.2" stroke-linejoin="round"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><radialGradient id="pg1" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#ffd3da"/><stop offset=".55" stop-color="#f58aa3"/><stop offset="1" stop-color="#cf3f68"/></radialGradient><radialGradient id="pg2" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#ff9aa8"/><stop offset=".55" stop-color="#e0405f"/><stop offset="1" stop-color="#9e1239"/></radialGradient><radialGradient id="pg3" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#fffafa"/><stop offset=".55" stop-color="#fbd0d8"/><stop offset="1" stop-color="#efa3b3"/></radialGradient><radialGradient id="pg4" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#ffe27a"/><stop offset=".55" stop-color="#ffb02e"/><stop offset="1" stop-color="#e87a12"/></radialGradient></defs><symbol id="pt-r" viewBox="0 0 40 52"><path d="M20 50C7 45 0 29 3 17 5 8 13 2 20 8 27 2 35 8 37 17 40 29 33 45 20 50Z" fill="url(#pg1)"/><path d="M20 47C16 36 15 22 20 11M20 47C24 37 26 24 24 13" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.2" stroke-linecap="round"/><path d="M9 21C9 14 14 9 18 10" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="2" stroke-linecap="round"/></symbol><symbol id="pt-d" viewBox="0 0 40 52"><path d="M20 50C7 45 0 29 3 17 5 8 13 2 20 8 27 2 35 8 37 17 40 29 33 45 20 50Z" fill="url(#pg2)"/><path d="M20 47C16 36 15 22 20 11M20 47C24 37 26 24 24 13" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.2" stroke-linecap="round"/><path d="M9 21C9 14 14 9 18 10" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="2" stroke-linecap="round"/></symbol><symbol id="pt-b" viewBox="0 0 40 52"><path d="M20 50C7 45 0 29 3 17 5 8 13 2 20 8 27 2 35 8 37 17 40 29 33 45 20 50Z" fill="url(#pg3)"/><path d="M20 47C16 36 15 22 20 11M20 47C24 37 26 24 24 13" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.2" stroke-linecap="round"/><path d="M9 21C9 14 14 9 18 10" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="2" stroke-linecap="round"/></symbol><symbol id="pt-m" viewBox="0 0 40 52"><path d="M20 50C11 42 7 26 12 11 14 4 26 4 28 11 33 26 29 42 20 50Z" fill="url(#pg4)"/><path d="M20 48V9M20 46C16 36 14 24 15 12M20 46C24 36 26 24 25 12" fill="none" stroke="#b4540a" stroke-opacity=".3" stroke-width="1.1" stroke-linecap="round"/><path d="M13 20C13 14 16 10 19 10" fill="none" stroke="#fff" stroke-opacity=".4" stroke-width="1.8" stroke-linecap="round"/></symbol></svg>
 <noscript><style>.cover{display:none}html.lock,html.lock body{overflow:auto}.reveal,.st{opacity:1!important;transform:none!important}</style></noscript>
 <div class="cover" id="cover">
   <div class="curtain l"></div><div class="curtain r"></div>
   <button class="env" id="envBtn" type="button" aria-label="Open the invitation">
     <div class="inv">You’re invited</div>
     <div class="env-box">
-      <div class="letter"><span class="ln">Shreya</span><span class="la">&amp;</span><span class="ln">Omkar</span></div>
+      <div class="letter"><span class="ln">Shreya</span><span class="la"><svg class="rings" aria-hidden="true"><use href="#rings"/></svg></span><span class="ln">Omkar</span></div>
       <div class="pocket"></div>
       <div class="flap"></div>
       <div class="seal">S ✦ O</div>
@@ -129,7 +153,7 @@ html.lock,html.lock body{overflow:hidden}
     <div class="eyebrow">A celebration of love &amp; togetherness</div>
     <div class="ganesh marathi">॥ श्री गणेशाय नमः ॥</div>
     <div class="eyebrow">Together with our families</div>
-    <h1 class="names"><span>Shreya</span><span class="amp">&amp;</span><span>Omkar</span></h1>
+    <h1 class="names"><span>Shreya</span><span class="amp"><svg class="rings" aria-hidden="true"><use href="#rings"/></svg></span><span>Omkar</span></h1>
     <div class="hero-sub">Joyfully invite you to celebrate our engagement and share in the beginning of our forever.</div>
     <div class="hero-date"><span id="heroDate">Date to be announced</span></div>
     <a class="scroll" href="#invitation" aria-label="Scroll down to the invitation"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/><path d="M6 4l6 6 6-6" opacity=".45"/></svg></a>
@@ -143,7 +167,7 @@ html.lock,html.lock body{overflow:hidden}
       <h2>We’re getting engaged</h2>
     </div>
     <div class="intro-card">
-      <div class="nm">Shreya &amp; Omkar</div>
+      <div class="nm"><span class="l">Shreya</span><svg class="rings" aria-hidden="true"><use href="#rings"/></svg><span class="r">Omkar</span></div>
       <div class="orn">✦ ❧ ✦</div>
       <p>With the blessings of our elders and the love of our families, we invite you to our engagement ceremony, the first step of a beautiful journey together.</p>
       <p><strong>Your presence will make our day complete.</strong></p>
@@ -188,7 +212,7 @@ html.lock,html.lock body{overflow:hidden}
 
 <footer class="reveal">
   <div class="orn">✦ ❧ ✦</div>
-  <div class="sc">Shreya &amp; Omkar</div>
+  <div class="sc"><span class="l">Shreya</span><svg class="rings" aria-hidden="true"><use href="#rings"/></svg><span class="r">Omkar</span></div>
   <p>27th December 2026 · Two hearts, one beautiful journey</p>
   <p>Made with love. We can’t wait to celebrate with you.</p>
 </footer>
@@ -200,7 +224,7 @@ html.lock,html.lock body{overflow:hidden}
 var CONFIG = {
   dateISO: "2026-12-27T11:00:00+05:30",
   dateText: "Sunday, 27th December 2026",
-  timeText: "11:00 AM"
+  timeText: "10:00 AM"
 };
 (function(){
   var $ = function(i){return document.getElementById(i)};
@@ -221,10 +245,15 @@ var CONFIG = {
     };
     tick(); setInterval(tick, 1000);
   }
-  // Soft ambient music: a short seamless loop synthesised in the browser and played
-  // through a normal <audio> element (works on iPhones even when the silent switch is on).
+  // Background music: music.mp3 (keep it in the same folder as this page) played through a
+  // normal <audio> element, which also works on iPhones with the silent switch on.
+  // If the file can't be loaded, a soft synthesised loop is used instead.
   var Music = (function(){
-    var audio, on = false;
+    var audio = new Audio("music.mp3"), on = false;
+    audio.loop = true; audio.preload = "auto"; audio.volume = .7;
+    audio.addEventListener("error", function(){
+      try { build(); if (on) { var q = audio.play(); if (q && q.catch) q.catch(function(){}); } } catch (e) {}
+    });
     function build(){
       var sr = 22050, secs = 24, n = sr * secs, buf = new Float32Array(n);
       var chords = [[261.63,329.63,392],[220,261.63,329.63],[174.61,220,261.63],[196,246.94,293.66]];
@@ -279,10 +308,29 @@ var CONFIG = {
   $("musicBtn").addEventListener("click", Music.toggle);
   // Envelope opening: flap lifts, letter rises, curtains part
   var cover = $("cover"), opened = false;
+  // Petals burst out of the envelope when it opens
+  function burst(){
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var r = document.querySelector(".env-box").getBoundingClientRect();
+    var cx = r.left + r.width / 2, cy = r.top + r.height / 2, kinds = ["pt-r", "pt-d", "pt-b", "pt-m"];
+    for (var n = 0; n < 28; n++){
+      var el = document.createElement("i"), ang = Math.random() * Math.PI * 2, dist = 110 + Math.random() * 220, w = 14 + Math.random() * 14;
+      el.className = "pop";
+      el.style.cssText = "left:" + cx + "px;top:" + cy + "px;width:" + w + "px;height:" + (w * 1.3) + "px;--x:" + (Math.cos(ang) * dist) + "px;--y:" + (Math.sin(ang) * dist - 90) + "px;--r:" + (Math.random() * 720 - 360) + "deg;animation-delay:" + (.55 + Math.random() * .25) + "s";
+      el.innerHTML = '<svg viewBox="0 0 40 52" aria-hidden="true"><use href="#' + kinds[n % 4] + '"/></svg>';
+      cover.appendChild(el);
+    }
+  }
   $("envBtn").addEventListener("click", function(){
     if (opened) return; opened = true;
     try { Music.start(); } catch (e) {}
+    // Go full screen where the browser allows it (Android Chrome, iPad; iPhone Safari does not)
+    try {
+      var de = document.documentElement, rf = de.requestFullscreen || de.webkitRequestFullscreen;
+      if (rf) { var fp = rf.call(de); if (fp && fp.catch) fp.catch(function(){}); }
+    } catch (e) {}
     cover.classList.add("open");
+    try { burst(); } catch (e) {}
     setTimeout(function(){ cover.classList.add("split"); }, 1500);
     setTimeout(function(){
       cover.hidden = true; document.documentElement.classList.remove("lock"); window.scrollTo(0, 0);
@@ -294,6 +342,34 @@ var CONFIG = {
       }, 4500);
     }, 3000);
   });
+  // Floating rose and marigold petals (skipped for guests who prefer reduced motion)
+  (function(){
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var layer = document.createElement("div");
+    layer.className = "petals"; layer.setAttribute("aria-hidden", "true");
+    var kinds = ["pt-r", "pt-d", "pt-b", "pt-m", "pt-r", "pt-m"];
+    var count = innerWidth < 700 ? 16 : 26;
+    for (var k = 0; k < count; k++){
+      var w = 15 + Math.random() * 15, fall = 9 + Math.random() * 8;
+      var el = document.createElement("i");
+      el.style.cssText = "left:" + (Math.random() * 100) + "%;width:" + w + "px;height:" + (w * 1.3) + "px;animation-duration:" + fall + "s;animation-delay:-" + (Math.random() * fall) + "s;opacity:" + (.78 + Math.random() * .22);
+      el.innerHTML = '<b style="animation-duration:' + (3 + Math.random() * 3) + 's;animation-delay:-' + (Math.random() * 3) + 's"><svg viewBox="0 0 40 52" style="animation-duration:' + (4 + Math.random() * 5) + 's;animation-direction:' + (Math.random() < .5 ? "normal" : "reverse") + '" aria-hidden="true"><use href="#' + kinds[k % kinds.length] + '"/></svg></b>';
+      layer.appendChild(el);
+    }
+    document.body.appendChild(layer);
+  })();
+  // Small bouncing arrow at the bottom of each page, leading to the next one
+  (function(){
+    var secs = Array.prototype.slice.call(document.querySelectorAll("main > section.section")).filter(function(x){ return !x.hidden; });
+    secs.forEach(function(sec, k){
+      var next = secs[k + 1] || document.querySelector("footer");
+      var a = document.createElement("a");
+      a.className = "nx"; a.href = "#"; a.setAttribute("aria-label", "Scroll to the next page");
+      a.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/><path d="M6 4l6 6 6-6" opacity=".45"/></svg>';
+      a.addEventListener("click", function(e){ e.preventDefault(); next.scrollIntoView({behavior: "smooth"}); });
+      sec.appendChild(a);
+    });
+  })();
   var io = new IntersectionObserver(function(es){
     es.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add("on"); io.unobserve(en.target); } });
   }, {threshold:.12});
