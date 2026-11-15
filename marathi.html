@@ -105,7 +105,7 @@ html.lock,html.lock body{overflow:hidden}
 [hidden]{display:none!important}
 @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 @media(max-width:700px){.section{padding:64px 16px}.grid{grid-template-columns:1fr}.timer{gap:7px}.tb strong{font-size:2rem}.intro-card{border-radius:120px 120px 18px 18px}.hero-date{letter-spacing:.08em}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.scroll{animation:none}.hero-inner{animation:none}.reveal,.st{transform:none!important}.curtain{transition:opacity 1.2s ease}.cover.split .curtain.l,.cover.split .curtain.r{transform:none;opacity:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.scroll{animation:none}.nx svg{animation:none}.hero-inner{animation:none}.reveal,.st{transform:none!important}.curtain{transition:opacity 1.2s ease}.cover.split .curtain.l,.cover.split .curtain.r{transform:none;opacity:0}}
 .eyebrow,.kicker,.hero-date,.tb span,.tap,.music{letter-spacing:0;text-transform:none}
 .eyebrow,.kicker,.tb span,.tap{font-size:.85rem}
 .hero-date{font-size:.95rem}
@@ -121,6 +121,10 @@ html.lock,html.lock body{overflow:hidden}
 .rings{display:block;width:104px;height:61px;margin:0 auto}
 .names .rings{margin:4px auto}
 .letter .rings{width:50px;height:29px;margin:2px auto}
+main>section.section{position:relative}
+.nx{position:absolute;left:50%;bottom:8px;width:44px;height:44px;margin-left:-22px;display:grid;place-items:center;color:var(--kick);opacity:.9;text-decoration:none}
+.countdown .nx{color:var(--gold-light)}
+.nx svg{display:block;width:26px;height:26px;animation:bob 1.8s ease-in-out infinite}
 .tap{font-size:1.3rem;font-weight:600;margin-top:30px;color:#fff1c9}
 .pop{position:absolute;z-index:3;pointer-events:none;opacity:0;animation:pop 2s cubic-bezier(.22,.7,.3,1) forwards}
 .pop svg{display:block;width:100%;height:100%}
@@ -160,7 +164,7 @@ html.lock,html.lock body{overflow:hidden}
   <div class="hero-inner">
     <div class="eyebrow">प्रेम आणि सहजीवनाचा मंगल सोहळा</div>
     <div class="ganesh marathi">॥ श्री गणेशाय नमः ॥</div>
-    <div class="eyebrow">आमच्या कुटुंबीयांच्या स्नेहाशीर्वादाने</div>
+    <div class="eyebrow">कुटुंबीयांच्या स्नेहाशीर्वादाने</div>
     <h1 class="names">
       <span class="pre">चि. सौ. कां.</span>
       <span>श्रेया</span>
@@ -170,7 +174,7 @@ html.lock,html.lock body{overflow:hidden}
       <span>ओमकार</span>
       <span class="par">(सौ. संगीता व श्री सुभाष अर्दाळकर यांचा सुपुत्र)</span>
     </h1>
-    <div class="hero-sub">च्या साखरपुड्याचा आनंद साजरा करण्यासाठी आणि नव्या आयुष्याच्या शुभारंभाचे साक्षीदार होण्यासाठी आपणास सस्नेह आमंत्रण.</div>
+    <div class="hero-sub">ह्यांच्या साखरपुड्याचा आनंद साजरा करण्यासाठी आणि नव्या आयुष्याच्या शुभारंभाचे साक्षीदार होण्यासाठी आपणास सस्नेह आमंत्रण.</div>
     <div class="hero-date"><span id="heroDate">तारीख लवकरच कळवू</span></div>
     <a class="scroll" href="#invitation" aria-label="खाली स्क्रोल करा"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/><path d="M6 4l6 6 6-6" opacity=".45"/></svg></a>
   </div>
@@ -238,7 +242,7 @@ html.lock,html.lock body{overflow:hidden}
 var CONFIG = {
   dateISO: "2026-12-27T11:00:00+05:30",
   dateText: "रविवार, २७ डिसेंबर २०२६",
-  timeText: "सकाळी ११:०० वाजता"
+  timeText: "सकाळी १०:०० वाजता"
 };
 (function(){
   var $ = function(i){return document.getElementById(i)};
@@ -372,6 +376,18 @@ var CONFIG = {
       layer.appendChild(el);
     }
     document.body.appendChild(layer);
+  })();
+  // Small bouncing arrow at the bottom of each page, leading to the next one
+  (function(){
+    var secs = Array.prototype.slice.call(document.querySelectorAll("main > section.section")).filter(function(x){ return !x.hidden; });
+    secs.forEach(function(sec, k){
+      var next = secs[k + 1] || document.querySelector("footer");
+      var a = document.createElement("a");
+      a.className = "nx"; a.href = "#"; a.setAttribute("aria-label", "पुढे स्क्रोल करा");
+      a.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/><path d="M6 4l6 6 6-6" opacity=".45"/></svg>';
+      a.addEventListener("click", function(e){ e.preventDefault(); next.scrollIntoView({behavior: "smooth"}); });
+      sec.appendChild(a);
+    });
   })();
   var io = new IntersectionObserver(function(es){
     es.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add("on"); io.unobserve(en.target); } });
