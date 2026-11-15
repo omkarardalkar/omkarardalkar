@@ -102,6 +102,38 @@ footer p{opacity:.85;line-height:1.7}
 .pop{position:absolute;pointer-events:none;opacity:0;animation:pop 1.6s cubic-bezier(.22,.7,.3,1) forwards}
 .pop svg{display:block;width:100%;height:100%}
 @keyframes pop{0%{opacity:0;transform:translate(-50%,-50%) scale(.3)}12%{opacity:1}45%{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1) rotate(180deg)}100%{opacity:0;transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y) + 200px)) scale(.9) rotate(360deg)}}
+.panel{position:relative}
+.panel[data-ch]{cursor:pointer}
+.panel .tap{position:absolute;right:10px;top:10px;font:400 1rem Bangers,Impact,sans-serif;letter-spacing:.06em;background:var(--pink);color:#fff;border:3px solid var(--ink);padding:2px 9px;animation:pulse 1s ease-in-out infinite alternate}
+.modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:14px;background:#140a2ed9;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.mcard{--r:-1deg;position:relative;width:min(440px,100%);max-height:96svh;overflow:auto;background:#fff;border:5px solid var(--ink);box-shadow:8px 8px 0 var(--pink);padding:10px 10px 12px;animation:slam .5s cubic-bezier(.2,1.4,.4,1) both}
+.mtitle{font-size:1.7rem;text-align:center;color:var(--vio);margin:2px 0 8px}
+.mx{position:absolute;right:8px;top:8px;z-index:5;width:34px;height:34px;border-radius:50%;border:3px solid var(--ink);background:var(--gold);font-weight:800;cursor:pointer}
+.scene{position:relative;border:4px solid var(--ink);overflow:hidden;line-height:0}
+.scene svg{display:block;width:100%;height:auto}
+.fl{position:absolute;bottom:-30px;line-height:1;pointer-events:none;animation:flo linear forwards}
+@keyframes flo{to{transform:translateY(-340px) rotate(25deg);opacity:0}}
+.cap{margin-top:10px;min-height:3.2em;display:grid;place-items:center;padding:10px 12px;border:4px solid var(--ink);background:#fff8ee;box-shadow:4px 4px 0 var(--ink);font-weight:800;text-align:center;line-height:1.4}
+.cap.pk{animation:pk .45s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pk{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
+.mhint{text-align:center;font-size:.78rem;font-weight:700;opacity:.65;margin-top:8px}
+.banner{position:fixed;left:50%;top:calc(12px + env(safe-area-inset-top,0px));transform:translateX(-50%);z-index:75;width:min(92vw,440px);background:#fff;border:4px solid var(--ink);box-shadow:5px 5px 0 var(--pink);padding:12px 16px;text-align:center;font-weight:800;line-height:1.45}
+.banner.pk{animation:bpk .45s cubic-bezier(.2,1.4,.4,1)}
+@keyframes bpk{from{opacity:0;transform:translateX(-50%) scale(.7)}to{opacity:1;transform:translateX(-50%) scale(1)}}
+.spk{animation:tw 1.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.beat{animation:beat 1s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes beat{50%{transform:scale(1.25)}}
+.gl{animation:inL 1.3s cubic-bezier(.2,.8,.3,1) both}
+.gr{animation:inR 1.3s cubic-bezier(.2,.8,.3,1) both}
+@keyframes inL{from{transform:translateX(-150px)}}
+@keyframes inR{from{transform:translateX(150px)}}
+.hop{animation:hop .5s ease-in-out 1.3s infinite alternate}
+@keyframes hop{to{transform:translateY(-9px)}}
+.burst,.yes{opacity:0;transform-box:fill-box;transform-origin:center;animation:popin .45s cubic-bezier(.2,1.4,.4,1) 1.3s forwards}
+@keyframes popin{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:scale(1)}}
+.ping .tb{animation:ping .6s ease-in-out 5}
+@keyframes ping{50%{transform:skewX(-4deg) scale(1.12)}}
+@media(prefers-reduced-motion:reduce){.panel .tap,.spk,.beat,.hop,.gl,.gr,.fl{animation:none}.burst,.yes{animation:none;opacity:1}}
 @media(max-width:700px){.panels,.quest{grid-template-columns:1fr}.timer{gap:7px}.tb strong{font-size:2.1rem}.sec{padding:64px 14px 90px}.hero{padding-bottom:110px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.speed,.cloud,.star,.shoot,.scroll,.nx svg,.start{animation:none}.rv{opacity:1}.rv.in{animation:none}}
 </style>
@@ -138,9 +170,9 @@ footer p{opacity:.85;line-height:1.7}
   <div class="wrap">
     <h2 class="rv">PREVIOUSLY ON OUR STORY…</h2>
     <div class="panels">
-      <div class="panel dots rv" style="--r:-2deg"><span class="sfx">DOKI DOKI!</span><h3>Chapter 1</h3><p>Two hearts met, and the whole world went soft and sparkly.</p></div>
-      <div class="panel dots rv" style="--r:1.5deg"><span class="sfx">KIRA KIRA!</span><h3>Chapter 2</h3><p>Our families said YES, and the blessings began to pour in.</p></div>
-      <div class="panel dots rv" style="--r:-1deg"><span class="sfx">YATTA!</span><h3>Chapter 3</h3><p>Now the big moment is here: our engagement. Be part of the scene!</p></div>
+      <div class="panel dots rv" style="--r:-2deg" role="button" tabindex="0" data-ch="1"><i class="tap">▶ TAP</i><span class="sfx">DOKI DOKI!</span><h3>Chapter 1</h3><p>Two hearts met, and the whole world went soft and sparkly.</p></div>
+      <div class="panel dots rv" style="--r:1.5deg" role="button" tabindex="0" data-ch="2"><i class="tap">▶ TAP</i><span class="sfx">KIRA KIRA!</span><h3>Chapter 2</h3><p>Our families said YES, and the blessings began to pour in.</p></div>
+      <div class="panel dots rv" style="--r:-1deg" role="button" tabindex="0" data-ch="3"><i class="tap">▶ TAP</i><span class="sfx">YATTA!</span><h3>Chapter 3</h3><p>Now the big moment is here: our engagement. Be part of the scene!</p></div>
     </div>
   </div>
 </section>
@@ -180,6 +212,18 @@ footer p{opacity:.85;line-height:1.7}
   <p class="rv">Your presence will make our day complete.<br>With love, Shreya &amp; Omkar ✦</p>
 </footer>
 
+<div class="banner" id="banner" hidden>📺 Chapter 3 is OUR ENGAGEMENT… and this episode hasn’t aired yet!</div>
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-label="Chapter scene"><div class="mcard" id="mcard"><button class="mx" id="mx" type="button" aria-label="Close">✕</button><div class="mtitle bang" id="mtitle"></div><div class="scene" id="scene"></div><div class="cap" id="cap"></div><div class="mhint">Tap anywhere to close</div></div></div>
+<template id="sc1"><svg viewBox="0 0 360 300" role="img" aria-label="An anime boy and girl gazing lovingly at each other"><defs><linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd6e8"/><stop offset="1" stop-color="#c9a7ff"/></linearGradient><g id="eye"><ellipse rx="10.5" ry="14.5" fill="#fff" stroke="#1b1038" stroke-width="2"/><ellipse cx="3" cy="2" rx="7.5" ry="11.5" style="fill:var(--iris)"/><ellipse cx="3.6" cy="2.6" rx="3.6" ry="6.4" fill="#1b1038"/><circle cx="6.5" cy="-4" r="3.2" fill="#fff"/><circle cx="1" cy="7" r="1.7" fill="#fff"/><path d="M-12-7C-8-16 6-17 11-9" fill="none" stroke="#1b1038" stroke-width="3.2" stroke-linecap="round"/></g></defs><rect width="360" height="300" fill="url(#bg1)"/><g fill="#fff" opacity=".35"><circle cx="40" cy="50" r="22"/><circle cx="324" cy="64" r="30"/><circle cx="306" cy="236" r="18"/><circle cx="56" cy="214" r="26"/></g><path class="spk" style="animation-delay:0s" transform="translate(30 120) scale(1)" d="M0-9L2.5-2.5 9 0 2.5 2.5 0 9-2.5 2.5-9 0-2.5-2.5Z" fill="#fff"/><path class="spk" style="animation-delay:0.5s" transform="translate(330 150) scale(1.2)" d="M0-9L2.5-2.5 9 0 2.5 2.5 0 9-2.5 2.5-9 0-2.5-2.5Z" fill="#fff"/><path class="spk" style="animation-delay:1s" transform="translate(180 40) scale(0.9)" d="M0-9L2.5-2.5 9 0 2.5 2.5 0 9-2.5 2.5-9 0-2.5-2.5Z" fill="#fff"/><path class="spk" style="animation-delay:0.8s" transform="translate(60 60) scale(0.7)" d="M0-9L2.5-2.5 9 0 2.5 2.5 0 9-2.5 2.5-9 0-2.5-2.5Z" fill="#fff"/>
+<path d="M68 125C62 60 96 38 122 38C150 38 180 60 174 125C172 170 184 205 168 240L72 240C58 205 70 170 68 125Z" fill="#2a1a3a"/><path d="M52 300C52 252 84 232 122 232C160 232 192 252 192 300Z" fill="#ff7aa8"/><path d="M90 248C104 264 140 264 154 248" fill="none" stroke="#ffd166" stroke-width="5" stroke-linecap="round"/><path d="M108 168h28v62c-8 8-20 8-28 0z" fill="#ffd6bb"/>
+<g transform="rotate(8 120 160)"><ellipse cx="120" cy="128" rx="44" ry="50" fill="#ffe6d5"/><path d="M74 112C76 70 104 58 124 60C148 60 170 74 168 114C152 98 134 92 122 80C110 98 92 108 74 112Z" fill="#2a1a3a"/><path d="M72 112C66 140 70 160 76 176C80 150 78 130 84 112ZM170 112C176 140 172 160 166 176C162 150 164 130 158 112Z" fill="#2a1a3a"/><use href="#eye" x="104" y="134" style="--iris:#7a2f8f"/><use href="#eye" x="138" y="134" style="--iris:#7a2f8f"/><ellipse cx="90" cy="154" rx="9" ry="5" fill="#ff7aa8" opacity=".55"/><ellipse cx="150" cy="154" rx="9" ry="5" fill="#ff7aa8" opacity=".55"/><path d="M113 160Q120 167 127 160" stroke="#c4476b" stroke-width="2.6" fill="none" stroke-linecap="round"/><circle cx="160" cy="76" r="9" fill="#fff"/><circle cx="160" cy="76" r="4" fill="#ffd166"/></g>
+<path d="M168 300C168 252 200 232 240 232C280 232 312 252 312 300Z" fill="#fff1d0"/><path d="M214 236L240 264L266 236" fill="none" stroke="#ffd166" stroke-width="6" stroke-linejoin="round"/><path d="M226 168h28v62c-8 8-20 8-28 0z" fill="#f2c9a5"/>
+<g transform="rotate(-8 240 160)"><ellipse cx="240" cy="128" rx="44" ry="50" fill="#f7d6b8"/><path d="M194 116C190 66 212 42 240 40C268 42 290 66 286 116C280 96 268 84 256 80C252 92 230 94 220 86C210 92 200 102 194 116Z" fill="#3b2a24"/><path d="M214 52L208 30L228 46ZM240 44L240 20L254 42ZM262 48L276 28L276 52Z" fill="#3b2a24"/><use href="#eye" transform="translate(224 134) scale(-1 1)" style="--iris:#2b6cb0"/><use href="#eye" transform="translate(258 134) scale(-1 1)" style="--iris:#2b6cb0"/><path d="M212 114Q224 107 234 113M246 113Q256 107 268 114" stroke="#3b2a24" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="212" cy="154" rx="9" ry="5" fill="#ff7aa8" opacity=".5"/><ellipse cx="270" cy="154" rx="9" ry="5" fill="#ff7aa8" opacity=".5"/><path d="M233 160Q240 167 247 160" stroke="#b5476b" stroke-width="2.6" fill="none" stroke-linecap="round"/></g>
+<path class="beat" transform="translate(0 -22)" d="M180 120C180 106 164 104 164 118C164 130 180 138 180 146C180 138 196 130 196 118C196 104 180 106 180 120Z" fill="#ff4d86" stroke="#fff" stroke-width="2"/></svg></template>
+<template id="sc2"><svg viewBox="0 0 360 250" role="img" aria-label="Two anime families joyfully shouting YES"><defs><linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3b0"/><stop offset="1" stop-color="#ffb36b"/></linearGradient><g id="fb"><path d="M18 98C16 74 22 60 30 60S44 74 42 98Z" style="fill:var(--cloth)"/><path d="M20 68L6 46M40 68L54 46" stroke-width="7" stroke-linecap="round" style="stroke:var(--cloth)"/><circle cx="6" cy="44" r="5" fill="#ffe3cf"/><circle cx="54" cy="44" r="5" fill="#ffe3cf"/><circle cx="30" cy="36" r="21" fill="#ffe3cf"/><path d="M19 36Q23 29 27 36M33 36Q37 29 41 36" fill="none" stroke="#1b1038" stroke-width="2.6" stroke-linecap="round"/><path d="M24 44Q30 54 36 44Z" fill="#c4476b" stroke="#1b1038" stroke-width="1.5"/><ellipse cx="18" cy="43" rx="4" ry="2.6" fill="#ff7aa8" opacity=".6"/><ellipse cx="42" cy="43" rx="4" ry="2.6" fill="#ff7aa8" opacity=".6"/></g><symbol id="fa" viewBox="0 0 60 100"><use href="#fb"/><path d="M9 36C7 16 19 8 30 8S53 16 51 36C46 26 40 22 30 20 20 22 14 26 9 36Z" style="fill:var(--hair)"/></symbol><symbol id="fm" viewBox="0 0 60 100"><path d="M7 40C4 14 16 6 30 6S56 14 53 40C54 58 50 66 46 70L14 70C10 66 6 58 7 40Z" style="fill:var(--hair)"/><use href="#fb"/><path d="M9 36C8 18 20 10 30 10S52 18 51 36C46 26 40 22 30 22 20 24 14 26 9 36Z" style="fill:var(--hair)"/><circle cx="30" cy="25" r="2" fill="#e11d48"/></symbol></defs><rect width="360" height="250" fill="url(#bg2)"/><rect y="210" width="360" height="40" fill="#8ee3a0"/><path class="spk" style="animation-delay:0s" transform="translate(40 40) scale(1.1)" d="M0-9L2.5-2.5 9 0 2.5 2.5 0 9-2.5 2.5-9 0-2.5-2.5Z" fill="#fff"/><path class="spk" style="animation-delay:0.6s" transform="translate(320 50) scale(1)" d="M0-9L2.5-2.5 9 0 2.5 2.5 0 9-2.5 2.5-9 0-2.5-2.5Z" fill="#fff"/><path class="spk" style="animation-delay:1.1s" transform="translate(180 20) scale(0.8)" d="M0-9L2.5-2.5 9 0 2.5 2.5 0 9-2.5 2.5-9 0-2.5-2.5Z" fill="#fff"/>
+<g class="gl"><use class="hop" href="#fa" x="14" y="116" width="54" height="90" style="--hair:#222;--cloth:#3b82f6"/><use class="hop" style="animation-delay:1.45s;--hair:#3a1f2b;--cloth:#ff7aa8" href="#fm" x="68" y="120" width="52" height="87"/><use class="hop" style="animation-delay:1.6s;--hair:#5b3a29;--cloth:#ffd166" href="#fa" x="122" y="148" width="36" height="60"/></g>
+<g class="gr"><use class="hop" style="animation-delay:1.6s;--hair:#222;--cloth:#6ee7ff" href="#fa" x="202" y="148" width="36" height="60"/><use class="hop" style="animation-delay:1.45s;--hair:#2a1a3a;--cloth:#a78bfa" href="#fm" x="240" y="120" width="52" height="87"/><use class="hop" style="--hair:#3b2a24;--cloth:#10b981" href="#fa" x="292" y="116" width="54" height="90"/></g>
+<polygon class="burst" points="180.0,20.0 188.0,38.9 203.4,25.3 202.4,45.9 222.2,40.3 212.4,58.4 232.6,62.0 216.0,74.0 232.6,86.0 212.4,89.6 222.2,107.7 202.4,102.1 203.4,122.7 188.0,109.1 180.0,128.0 172.0,109.1 156.6,122.7 157.6,102.1 137.8,107.7 147.6,89.6 127.4,86.0 144.0,74.0 127.4,62.0 147.6,58.4 137.8,40.3 157.6,45.9 156.6,25.3 172.0,38.9" fill="#ffd166" stroke="#1b1038" stroke-width="4" stroke-linejoin="round"/><text class="yes" x="180" y="88" text-anchor="middle" font-family="Bangers,Impact,sans-serif" font-size="40" fill="#ff4d86" stroke="#1b1038" stroke-width="2" paint-order="stroke">YES!!</text></svg></template>
 <button class="music off" id="musicBtn" type="button" aria-label="Play or pause background music"><span>♪</span> <span id="musicLbl">Play music</span></button>
 
 <script>
@@ -190,11 +234,13 @@ var CONFIG = { dateISO: "2026-12-27T11:00:00+05:30" };
 
   /* ---- Anime-opening style music (original), synthesised into a seamless loop ---- */
   var Music = (function(){
-    var audio, on = false;
-    function build(){
-      var sr = 22050, bpm = 150, beat = 60 / bpm, bars = 16, n = Math.floor(sr * beat * 4 * bars), buf = new Float32Array(n);
+    var tracks = {}, cur = "main", on = false;
+    function build(style){
+      var sr = 22050, bpm = style === "joy" ? 172 : style === "love" ? 70 : 150, beat = 60 / bpm, bars = style === "love" ? 8 : 16, n = Math.floor(sr * beat * 4 * bars), buf = new Float32Array(n);
       var hz = function(m){ return 440 * Math.pow(2, (m - 69) / 12); };
       var chords = [[53,57,60,64],[55,59,62,65],[52,55,59,62],[57,60,64,67]], roots = [41,43,40,45];
+      if (style === "love") { chords = [[60,64,67,71],[55,59,62,66],[57,60,64,67],[53,57,60,64]]; roots = [48,43,45,41]; }
+      if (style === "joy") { chords = [[60,64,67],[55,59,62],[57,60,64],[53,57,60]]; roots = [36,43,45,41]; }
       var hook = [[76,76,74,72],[74,74,72,71],[71,72,74,76],[72,72,69,72]];
       function osc(t0, dur, f, vol, type){
         var s0 = Math.floor(t0 * sr), len = Math.floor(dur * sr), w = f / sr, ph = 0;
@@ -212,8 +258,30 @@ var CONFIG = { dateISO: "2026-12-27T11:00:00+05:30" };
         var s0 = Math.floor(t0 * sr), len = Math.floor(dur * sr), prev = 0;
         for (var i = 0; i < len; i++){ var r = Math.random() * 2 - 1, v = hp ? r - prev : r; prev = r; buf[(s0 + i) % n] += v * vol * Math.pow(1 - i / len, 2); }
       }
+      var LM = [[[0,79,1.5],[1.5,76,.5],[2,77,1],[3,79,1]],[[0,78,2],[2,76,1],[3,74,1]],[[0,76,1.5],[1.5,79,.5],[2,81,2]],[[0,81,1],[1,79,1],[2,77,2]]];
+      function loveBar(t, c, ch){
+        var q, rt = roots[c];
+        osc(t, beat * 2.2, hz(rt), .16, 0); osc(t + beat * 2, beat * 2.2, hz(rt), .14, 0);
+        ch.forEach(function(m){ osc(t, beat * 4, hz(m), .03, 0); });
+        for (q = 0; q < 8; q++){ var m = ch[[0,1,2,3,2,1,2,1][q]]; osc(t + q * beat / 2, beat * 1.2, hz(m), .06, 0); osc(t + q * beat / 2, beat * .6, hz(m + 12), .02, 0); }
+        LM[c].forEach(function(x){ osc(t + x[0] * beat, x[2] * beat * .97, hz(x[1]), .09, 0); osc(t + x[0] * beat, x[2] * beat * .97, hz(x[1] + 12), .025, 0); });
+      }
+      function joyBar(t, c, ch){
+        var k, q, rt = roots[c];
+        for (k = 0; k < 4; k++){
+          var tk = t + k * beat;
+          if (k % 2 === 0) kick(tk); else noise(tk, .1, .32, false);
+          noise(tk, .04, .06, true); noise(tk + beat / 2, .04, .05, true);
+          osc(tk, beat * .4, hz(rt), .22, 2); osc(tk + beat / 2, beat * .4, hz(rt + 12), .16, 2);
+          ch.forEach(function(m){ osc(tk + beat / 2, beat * .25, hz(m), .028, 1); });
+          osc(tk, beat * .8, hz(ch[(k * 2) % 3] + 12), .07, 1);
+        }
+        for (q = 0; q < 8; q++) osc(t + q * beat / 2, beat * .4, hz(ch[[0,2,1,2,0,2,1,2][q] % 3] + 24), .04, 1);
+      }
       for (var b = 0; b < bars; b++){
         var t = b * beat * 4, c = b % 4, ch = chords[c], bigger = b >= 8;
+        if (style === "love") { loveBar(t, c, ch); continue; }
+        if (style === "joy") { joyBar(t, c, ch); continue; }
         for (var k = 0; k < 4; k++){
           var tk = t + k * beat;
           if (k % 2 === 0) kick(tk); else noise(tk, .16, .28, false);
@@ -233,23 +301,29 @@ var CONFIG = { dateISO: "2026-12-27T11:00:00+05:30" };
       v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
       v.setUint32(24, sr, true); v.setUint32(28, sr * 2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
       str(36, "data"); v.setUint32(40, n * 2, true);
-      for (var i = 0; i < n; i++) v.setInt16(44 + i * 2, Math.tanh(buf[i] * 1.3) * 0.6 * 32767, true);
-      audio = new Audio(URL.createObjectURL(new Blob([bytes], {type: "audio/wav"})));
-      audio.loop = true;
+      for (var i = 0; i < n; i++) v.setInt16(44 + i * 2, Math.tanh(buf[i] * 1.3) * (style === "love" ? 0.7 : 0.6) * 32767, true);
+      var a = new Audio(URL.createObjectURL(new Blob([bytes], {type: "audio/wav"})));
+      a.loop = true; tracks[style] = a;
     }
+    function get(nm){ if (!tracks[nm]) build(nm); return tracks[nm]; }
     function label(){ $("musicBtn").classList.toggle("off", !on); $("musicLbl").textContent = on ? "Music on" : "Play music"; }
     function start(){
       if (on) return;
-      try { if (!audio) build(); var p = audio.play(); on = true; if (p && p.catch) p.catch(function(){ on = false; label(); }); } catch (e) { on = false; }
+      try { var a = get(cur), p = a.play(); on = true; if (p && p.catch) p.catch(function(){ on = false; label(); }); } catch (e) { on = false; }
       label();
     }
-    function stop(){ if (!on) return; audio.pause(); on = false; label(); }
+    function stop(){ if (!on) return; get(cur).pause(); on = false; label(); }
+    function play(nm){
+      if (nm === cur) return;
+      var was = on; if (was) get(cur).pause();
+      cur = nm;
+      if (was){ var a = get(cur), p; a.currentTime = 0; p = a.play(); if (p && p.catch) p.catch(function(){}); }
+    }
     document.addEventListener("visibilitychange", function(){
-      if (!audio) return;
-      if (document.hidden) audio.pause(); else if (on) { var p = audio.play(); if (p && p.catch) p.catch(function(){}); }
+      if (document.hidden) get(cur).pause(); else if (on) { var p = get(cur).play(); if (p && p.catch) p.catch(function(){}); }
     });
-    setTimeout(function(){ if (!audio) { try { build(); } catch (e) {} } }, 500);
-    return { start: start, toggle: function(){ on ? stop() : start(); } };
+    ["main", "love", "joy"].forEach(function(nm, i){ setTimeout(function(){ if (!tracks[nm]) { try { build(nm); } catch (e) {} } }, 500 + i * 2500); });
+    return { start: start, stop: stop, play: play, toggle: function(){ on ? stop() : start(); } };
   })();
   $("musicBtn").addEventListener("click", Music.toggle);
 
@@ -318,6 +392,64 @@ var CONFIG = { dateISO: "2026-12-27T11:00:00+05:30" };
       sec.querySelectorAll(".rv").forEach(function(el, i){ el.style.setProperty("--i", i); io.observe(el); });
     });
   }
+
+  /* ---- chapters: tap to play ---- */
+  var modal = $("modal"), mcard = $("mcard"), cap = $("cap"), scene = $("scene"), timers = [], fx = null;
+  function later(fn, ms){ timers.push(setTimeout(fn, ms)); }
+  function say(t){ cap.textContent = t; cap.classList.remove("pk"); void cap.offsetWidth; cap.classList.add("pk"); }
+  function closeScene(){
+    modal.hidden = true; scene.innerHTML = ""; timers.forEach(clearTimeout); timers = []; clearInterval(fx);
+    Music.play("main");
+  }
+  function drift(chars, colors){
+    if (reduce) return;
+    fx = setInterval(function(){
+      var e = document.createElement("span");
+      e.className = "fl"; e.textContent = chars[Math.floor(Math.random() * chars.length)];
+      e.style.cssText = "left:" + (Math.random() * 100) + "%;font-size:" + (16 + Math.random() * 18) + "px;color:" + colors[Math.floor(Math.random() * colors.length)] + ";animation-duration:" + (2.4 + Math.random() * 2) + "s";
+      scene.appendChild(e); setTimeout(function(){ e.remove(); }, 4800);
+    }, 260);
+  }
+  function openScene(n){
+    scene.innerHTML = ""; scene.appendChild($("sc" + n).content.cloneNode(true));
+    $("mtitle").textContent = n === 1 ? "♡ CHAPTER 1: FIRST LOVE ♡" : "CHAPTER 2: THE FAMILIES MEET!";
+    modal.hidden = false; mcard.style.animation = "none"; void mcard.offsetWidth; mcard.style.animation = "";
+    if (n === 1){
+      Music.play("love"); drift(["♥", "♡", "✦"], ["#ff4d86", "#fff", "#ffd166"]);
+      say("Their eyes met…"); later(function(){ say("Time stopped. DOKI DOKI… ♡"); }, 2400); later(function(){ say("And just like that, love began."); }, 4800);
+    } else {
+      Music.play("joy"); drift(["★", "●", "✦", "♪"], ["#ff4d86", "#6ee7ff", "#ffd166", "#7a2f8f", "#10b981"]);
+      say("Two families, one big table of sweets…"); later(function(){ say("Blessings, laughter and hugs all around!"); }, 2600); later(function(){ say("And everyone shouted… YES!! 🎉"); }, 5000);
+    }
+  }
+  modal.addEventListener("click", closeScene);
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !modal.hidden) closeScene(); });
+  function slowScroll(el, ms){
+    if (reduce){ el.scrollIntoView(); return; }
+    var html = document.documentElement, y0 = window.scrollY, y1 = el.getBoundingClientRect().top + y0 - 10, t0 = null, stop = false;
+    var cancel = function(){ stop = true; };
+    ["wheel", "touchstart", "mousedown", "keydown"].forEach(function(ev){ window.addEventListener(ev, cancel, {once: true, passive: true}); });
+    html.style.scrollBehavior = "auto";
+    function step(t){
+      if (t0 === null) t0 = t;
+      var p = Math.min((t - t0) / ms, 1);
+      window.scrollTo(0, y0 + (y1 - y0) * (.5 - Math.cos(Math.PI * p) / 2));
+      if (p < 1 && !stop) requestAnimationFrame(step); else html.style.scrollBehavior = "";
+    }
+    requestAnimationFrame(step);
+  }
+  function chapter3(){
+    var b = $("banner"), tm = document.querySelector(".timer");
+    b.hidden = false; b.classList.remove("pk"); void b.offsetWidth; b.classList.add("pk");
+    setTimeout(function(){ b.hidden = true; }, 7000);
+    slowScroll($("count"), 6500);
+    setTimeout(function(){ tm.classList.add("ping"); setTimeout(function(){ tm.classList.remove("ping"); }, 3600); }, 6600);
+  }
+  document.querySelectorAll(".panel[data-ch]").forEach(function(pn){
+    function go(){ var n = +pn.dataset.ch; if (n === 3) chapter3(); else openScene(n); }
+    pn.addEventListener("click", go);
+    pn.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " "){ e.preventDefault(); go(); } });
+  });
 
   /* ---- countdown ---- */
   var target = new Date(CONFIG.dateISO).getTime();
